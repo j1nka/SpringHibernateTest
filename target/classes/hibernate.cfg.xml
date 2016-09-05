@@ -7,6 +7,6 @@
     <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="show_sql">true</property> 
     <property name="hibernate.connection.zeroDateTimeBehavior">convertToNull</property>
-    <mapping class="com.ag.news.model.NewsInfo"/>
+    <mapping class="com.ag.news.model.NewsInfo"/> <!-- which class to map via annotations -->
   </session-factory>
 </hibernate-configuration>

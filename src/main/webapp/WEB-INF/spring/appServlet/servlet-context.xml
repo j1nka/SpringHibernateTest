@@ -15,14 +15,14 @@
 <context:component-scan base-package="com.ag.news.dao" />
 <context:component-scan base-package="com.ag.news.model" />
     
-	<!-- "Преобразование ответов" контроллера в страницы (они же view) -->
+	<!-- Controllers response to view transformation -->
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     	<property name="prefix" value="/WEB-INF/pages/" />
     	<property name="suffix" value=".jsp" />
 	</bean>
 
-	<!-- Подключение к источнику данных (в моем случае - MySQL база данных) -->
+	<!-- DataBase connection properties (MySQL DB on localhost) -->
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
     	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -31,23 +31,19 @@
     	<property name="password" value="12345"/>
 	</bean>
 
-	<!-- Настройка параметров для sessinFactory Hibernate'a  -->
+	<!-- Beans creation  -->
 	
 	<bean id="sessionFactory"
     	class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
     	<property name="dataSource" ref="dataSource" />
     	<property name="configLocation" value="classpath:hibernate.cfg.xml" />
 	</bean>
-
-	<!-- Поддержка тразакций для SessionFactory -->
 	
 	<tx:annotation-driven />
 	<bean id="transactionManager"
     	class="org.springframework.orm.hibernate4.HibernateTransactionManager">
     	<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
-	<!-- Для использования в MainController -->
 	
 	<bean id="newsDao" class="com.ag.news.dao.NewsDAOImpl">
     	<constructor-arg>

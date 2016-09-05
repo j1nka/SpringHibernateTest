@@ -3,13 +3,15 @@ package com.ag.news.model;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.Id;
+
+//POJO (plain old java object creation and binding with a DB (in my case
+//it was MySQL DB "News" with one single table in it - "NEWSOFTHEWORLD"
 
 @Entity
 @Table(name = "NEWSOFTHEWORLD")
@@ -32,7 +34,7 @@ public class NewsInfo {
 	@Column(name="CATEGORY")
 	private String category;
 	
-	@Transient
+	@Transient //For correlation with MySQL date-format
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	public NewsInfo() {
