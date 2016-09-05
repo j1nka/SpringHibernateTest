@@ -18,7 +18,7 @@ import com.ag.news.model.NewsInfo;
 public class MainController {
 
 	
-	@Autowired //auto-binding through dependency in â servlet-context
+	@Autowired //auto-binding through dependency in a servlet-context
     private NewsDAO newsDao;
      
 	@RequestMapping(value="")
